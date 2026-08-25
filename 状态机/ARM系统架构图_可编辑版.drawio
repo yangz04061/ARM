@@ -1,0 +1,157 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0">
+  <diagram id="arm-architecture" name="Page-1">
+    <mxGraphModel dx="1758" dy="975" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1080" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="bg" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d8e2;" value="" vertex="1">
+          <mxGeometry height="940" width="1550" x="80" y="9" as="geometry" />
+        </mxCell>
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=20;fontStyle=1;fontColor=#132238;" value="ARM 系统架构图" vertex="1">
+          <mxGeometry height="28" width="520" x="125" y="28" as="geometry" />
+        </mxCell>
+        <mxCell id="header_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#204f86;strokeColor=#163a63;fontColor=#ffffff;fontSize=14;fontStyle=1;" value="输入层（车辆状态 / 驾驶意图 / 协同条件）" vertex="1">
+          <mxGeometry height="36" width="350" x="125" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="header_center" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#204f86;strokeColor=#163a63;fontColor=#ffffff;fontSize=14;fontStyle=1;" value="VMC ARM 主控" vertex="1">
+          <mxGeometry height="36" width="620" x="540" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="header_right" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#204f86;strokeColor=#163a63;fontColor=#ffffff;fontSize=14;fontStyle=1;" value="执行层（后转 / 悬架 / 状态输出）" vertex="1">
+          <mxGeometry height="36" width="370" x="1230" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="top_rule_l" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#eef3f8;strokeColor=#8aa4bf;fontSize=12;fontStyle=1;" value="状态量 / 请求 / 可控性 / 优先级" vertex="1">
+          <mxGeometry height="28" width="350" x="125" y="118" as="geometry" />
+        </mxCell>
+        <mxCell id="top_rule_c" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#eef3f8;strokeColor=#8aa4bf;fontSize=12;fontStyle=1;" value="风险评估 / 状态机 / 协同控制 / 降级" vertex="1">
+          <mxGeometry height="28" width="620" x="540" y="118" as="geometry" />
+        </mxCell>
+        <mxCell id="top_rule_r" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#eef3f8;strokeColor=#8aa4bf;fontSize=12;fontStyle=1;" value="目标请求 / 握手反馈 / HMI / 诊断" vertex="1">
+          <mxGeometry height="28" width="370" x="1230" y="118" as="geometry" />
+        </mxCell>
+        <mxCell id="input1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fbff;strokeColor=#9fb3c8;fontSize=13;spacingLeft=8;" value="车辆动态状态&lt;br&gt;车速 / 轮速 / 横向加速度 / 横摆角速度" vertex="1">
+          <mxGeometry height="84" width="160" x="125" y="165" as="geometry" />
+        </mxCell>
+        <mxCell id="input1_desc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#c8d2dc;fontSize=11;align=left;" value="IMU、ESC、VMC 状态估计输入&lt;br&gt;用于侧倾风险评估与触发判断" vertex="1">
+          <mxGeometry height="84" width="175" x="300" y="165" as="geometry" />
+        </mxCell>
+        <mxCell id="input2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fbff;strokeColor=#9fb3c8;fontSize=13;spacingLeft=8;" value="驾驶员与整车工况&lt;br/&gt;方向盘 / 制动 / 油门 / 功能模式" vertex="1">
+          <mxGeometry height="84" width="160" x="125" y="268" as="geometry" />
+        </mxCell>
+        <mxCell id="input2_desc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#c8d2dc;fontSize=11;align=left;" value="识别驾驶员意图与工况边界&lt;br/&gt;用于 ARM 激活、退出和抑制判断" vertex="1">
+          <mxGeometry height="84" width="175" x="300" y="268" as="geometry" />
+        </mxCell>
+        <mxCell id="input3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fbff;strokeColor=#9fb3c8;fontSize=13;spacingLeft=8;" value="执行器与高优先级功能状态&lt;br&gt;RWS / CDC / ECAS / 主动悬架 / ADAS" vertex="1">
+          <mxGeometry height="92" width="160" x="125" y="371" as="geometry" />
+        </mxCell>
+        <mxCell id="input3_desc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#c8d2dc;fontSize=11;align=left;" value="握手状态、执行器能力&lt;br&gt;以及坦克掉头 / 漂移等高优先级占用状态" vertex="1">
+          <mxGeometry height="92" width="175" x="300" y="371" as="geometry" />
+        </mxCell>
+        <mxCell id="input4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fbff;strokeColor=#9fb3c8;fontSize=13;spacingLeft=8;" value="制动 ARM 协同信息&lt;br&gt;VSEArmAtv / 横摆力矩 / 方向" vertex="1">
+          <mxGeometry height="92" width="160" x="125" y="482" as="geometry" />
+        </mxCell>
+        <mxCell id="input4_desc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#c8d2dc;fontSize=11;align=left;" value="用于确认制动 ARM 是否接管&lt;br&gt;以及 接管后VMC后转控制方向参考" vertex="1">
+          <mxGeometry height="92" width="175" x="300" y="482" as="geometry" />
+        </mxCell>
+        <mxCell id="core_shell" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#ecf2f8;strokeColor=#5b84b1;strokeWidth=2;" value="" vertex="1">
+          <mxGeometry height="505" width="620" x="540" y="165" as="geometry" />
+        </mxCell>
+        <mxCell id="core_head" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#1f5c98;strokeColor=#163a63;fontColor=#ffffff;fontSize=16;fontStyle=1;" value="VMC&amp;nbsp; ARM 主控" vertex="1">
+          <mxGeometry height="42" width="580" x="560" y="182" as="geometry" />
+        </mxCell>
+        <mxCell id="boundary_note" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff7e6;strokeColor=#d6b656;fontSize=11;align=left;spacingLeft=8;" value="边界说明：制动 / 驱动扭矩由制动 ARM 负责，VMC ARM 重点通过后转与悬架提高侧倾极限并抑制侧倾增长" vertex="1">
+          <mxGeometry height="42" width="555" x="570" y="235" as="geometry" />
+        </mxCell>
+        <mxCell id="arm1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f6faff;strokeColor=#5b84b1;fontSize=13;fontStyle=1;align=left;spacingLeft=10;" value="1. 车辆状态与风险等级估计" vertex="1">
+          <mxGeometry height="44" width="200" x="570" y="322" as="geometry" />
+        </mxCell>
+        <mxCell id="arm1_desc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d6dfe8;fontSize=11;align=left;" value="综合附着、横向加速度、横摆角速度、整车参数&lt;br&gt;进行侧翻趋势判断" vertex="1">
+          <mxGeometry height="44" width="335" x="790" y="322" as="geometry" />
+        </mxCell>
+        <mxCell id="arm2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f6faff;strokeColor=#5b84b1;fontSize=13;fontStyle=1;align=left;spacingLeft=10;" value="2. 激活 / 退出 / 优先级仲裁" vertex="1">
+          <mxGeometry height="44" width="200" x="570" y="376" as="geometry" />
+        </mxCell>
+        <mxCell id="arm2_desc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d6dfe8;fontSize=11;align=left;" value="校验关键故障、执行器可用性、高优先级功能占用&lt;br&gt;管理 Active / Inactive 状态切换" vertex="1">
+          <mxGeometry height="44" width="335" x="790" y="376" as="geometry" />
+        </mxCell>
+        <mxCell id="arm3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f6faff;strokeColor=#5b84b1;fontSize=13;fontStyle=1;align=left;spacingLeft=10;" value="3. 侧倾抑制目标策略生成" vertex="1">
+          <mxGeometry height="44" width="200" x="570" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="arm3_desc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d6dfe8;fontSize=11;align=left;" value="围绕提升侧倾极限 ay 生成控制目标&lt;br&gt;包括侧倾刚度、载荷分配、车身高度调整" vertex="1">
+          <mxGeometry height="44" width="335" x="790" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="arm4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f6faff;strokeColor=#5b84b1;fontSize=13;fontStyle=1;align=left;spacingLeft=10;" value="4. 后转协同控制" vertex="1">
+          <mxGeometry height="44" width="200" x="570" y="484" as="geometry" />
+        </mxCell>
+        <mxCell id="arm4_desc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d6dfe8;fontSize=11;align=left;" value="基于目标横摆姿态生成 RWS 目标角度请求&lt;br&gt;仅在制动可提供有效横摆力矩信息时持续协同" vertex="1">
+          <mxGeometry height="44" width="335" x="790" y="484" as="geometry" />
+        </mxCell>
+        <mxCell id="arm5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f6faff;strokeColor=#5b84b1;fontSize=13;fontStyle=1;align=left;spacingLeft=10;" value="5. 悬架协同控制分配" vertex="1">
+          <mxGeometry height="44" width="200" x="570" y="538" as="geometry" />
+        </mxCell>
+        <mxCell id="arm5_desc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d6dfe8;fontSize=11;align=left;" value="向 CDC / ECAS / 主动悬架分配目标&lt;br&gt;输出阻尼电流边界、高度刚度请求和四轮阻尼力目标" vertex="1">
+          <mxGeometry height="44" width="335" x="790" y="538" as="geometry" />
+        </mxCell>
+        <mxCell id="arm7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f6faff;strokeColor=#5b84b1;fontSize=13;fontStyle=1;align=left;spacingLeft=10;" value="6. 故障监控 / 降级 /" vertex="1">
+          <mxGeometry height="44" width="200" x="570" y="602" as="geometry" />
+        </mxCell>
+        <mxCell id="arm7_desc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d6dfe8;fontSize=11;align=left;" value="统一故障管理、功能退出、状态保持和诊断上报&lt;br&gt;输出 故障 / 降级提示到诊断接口" vertex="1">
+          <mxGeometry height="44" width="335" x="790" y="602" as="geometry" />
+        </mxCell>
+        <mxCell id="out1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fbff;strokeColor=#87a6c6;fontSize=13;" value="RWS 后轮转向&lt;br&gt;激活请求 / 目标角度 / 有效性" vertex="1">
+          <mxGeometry height="84" width="165" x="1250" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="out1_desc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#c8d2dc;fontSize=11;align=left;" value="优化横摆姿态、辅助制动 ARM&lt;br&gt;必要时在制动接管或优先级冲突时退出" vertex="1">
+          <mxGeometry height="84" width="175" x="1425" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="out2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fbff;strokeColor=#87a6c6;fontSize=13;" value="CDC 阻尼控制&lt;br&gt;激活请求 / Max-Min 电流边界" vertex="1">
+          <mxGeometry height="84" width="165" x="1250" y="272" as="geometry" />
+        </mxCell>
+        <mxCell id="out2_desc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#c8d2dc;fontSize=11;align=left;" value="快速抑制侧倾速度，限制车身动态响应&lt;br&gt;在悬架域可控时执行 VMC 限幅目标" vertex="1">
+          <mxGeometry height="84" width="175" x="1425" y="272" as="geometry" />
+        </mxCell>
+        <mxCell id="out3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fbff;strokeColor=#87a6c6;fontSize=13;" value="ECAS 空簧控制&lt;br&gt;高度 / 刚度请求" vertex="1">
+          <mxGeometry height="84" width="165" x="1250" y="374" as="geometry" />
+        </mxCell>
+        <mxCell id="out3_desc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#c8d2dc;fontSize=11;align=left;" value="提升侧倾刚度并调整车身高度&lt;br&gt;改善左右载荷分配与质心位置" vertex="1">
+          <mxGeometry height="84" width="175" x="1425" y="374" as="geometry" />
+        </mxCell>
+        <mxCell id="out4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fbff;strokeColor=#87a6c6;fontSize=13;" value="主动悬架控制&lt;br/&gt;offset / override / 四轮目标阻尼力" vertex="1">
+          <mxGeometry height="84" width="165" x="1250" y="476" as="geometry" />
+        </mxCell>
+        <mxCell id="out4_desc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#c8d2dc;fontSize=11;align=left;" value="通过内外侧主动力调整重心与载荷转移&lt;br&gt;握手成功后可由 VMC 独占阻尼力控制" vertex="1">
+          <mxGeometry height="84" width="175" x="1425" y="476" as="geometry" />
+        </mxCell>
+        <mxCell id="out5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fbff;strokeColor=#87a6c6;fontSize=13;" value="HMI / 诊断 / 状态广播&lt;br/&gt;VMCArmSts / 故障 / 降级" vertex="1">
+          <mxGeometry height="84" width="165" x="1250" y="578" as="geometry" />
+        </mxCell>
+        <mxCell id="out5_desc" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#c8d2dc;fontSize=11;align=left;" value="向仪表、整车诊断和相关控制器输出&lt;br&gt;功能激活状态、故障码与降级信息" vertex="1">
+          <mxGeometry height="84" width="175" x="1425" y="578" as="geometry" />
+        </mxCell>
+        <mxCell id="bottom_header" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#204f86;strokeColor=#163a63;fontColor=#ffffff;fontSize=14;fontStyle=1;" value="整车效果" vertex="1">
+          <mxGeometry height="36" width="1490" x="110" y="690" as="geometry" />
+        </mxCell>
+        <mxCell id="eff1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef7ef;strokeColor=#73a37c;fontSize=13;" value="提前侧翻风险干预&lt;br&gt;在制动 ARM 介入前启动协同控制" vertex="1">
+          <mxGeometry height="86" width="280" x="307.5" y="745" as="geometry" />
+        </mxCell>
+        <mxCell id="eff2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef7ef;strokeColor=#73a37c;fontSize=13;" value="提升侧倾极限 ay&lt;br/&gt;通过后转与悬架协同提高可控裕度" vertex="1">
+          <mxGeometry height="86" width="280" x="707.5" y="745" as="geometry" />
+        </mxCell>
+        <mxCell id="eff3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef7ef;strokeColor=#73a37c;fontSize=13;" value="制动 ARM依然保持控制,优化车身防侧倾表现" vertex="1">
+          <mxGeometry height="86" width="280" x="1107.5" y="745" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow_lc" edge="1" parent="1" style="shape=flexArrow;endArrow=classic;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="484" y="445" as="sourcePoint" />
+            <mxPoint x="530" y="445" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="arrow_cr" edge="1" parent="1" style="shape=flexArrow;endArrow=classic;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1170" y="445" as="sourcePoint" />
+            <mxPoint x="1230" y="445" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

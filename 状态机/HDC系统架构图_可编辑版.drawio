@@ -1,0 +1,163 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0" version="28.2.9">
+  <diagram id="hdc-architecture" name="Page-1">
+    <mxGraphModel dx="2182" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1080" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d0d8e2;" parent="1" vertex="1">
+          <mxGeometry x="100" y="10" width="1550" height="920" as="geometry" />
+        </mxCell>
+        <mxCell id="title" value="HDC 系统架构图" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=20;fontStyle=1;fontColor=#132238;" parent="1" vertex="1">
+          <mxGeometry x="125" y="28" width="520" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="header_left" value="输入层（感知 / 请求 / 调度）" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#204f86;strokeColor=#163a63;fontColor=#ffffff;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="125" y="70" width="350" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="header_center" value="VMC&amp;nbsp; HDC 主控" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#204f86;strokeColor=#163a63;fontColor=#ffffff;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="540" y="70" width="620" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="header_right" value="执行层（控制输出 / 状态反馈）" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#204f86;strokeColor=#163a63;fontColor=#ffffff;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="1230" y="70" width="370" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="top_rule_l" value="输入源 / 请求 / 状态量" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#eef3f8;strokeColor=#8aa4bf;fontSize=12;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="125" y="118" width="350" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="top_rule_c" value="算法主链 / 约束 / 协同" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#eef3f8;strokeColor=#8aa4bf;fontSize=12;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="540" y="118" width="620" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="top_rule_r" value="目标输出 / 控制协同 / HMI" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;fillColor=#eef3f8;strokeColor=#8aa4bf;fontSize=12;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="1230" y="118" width="370" height="28" as="geometry" />
+        </mxCell>
+        <mxCell id="sensor1" value="驾驶员输入&lt;br&gt;制动 / 油门 / HMI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fbff;strokeColor=#9fb3c8;fontSize=13;spacingLeft=8;" parent="1" vertex="1">
+          <mxGeometry x="125" y="165" width="160" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="sensor1_desc" value="坡道保持 / 下坡速度设定&lt;br&gt;HDC 开关、档位" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#c8d2dc;fontSize=11;align=left;" parent="1" vertex="1">
+          <mxGeometry x="300" y="165" width="175" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="sensor2" value="环境与车辆状态&lt;br/&gt;坡度 / 纵向加速度 / 车速 / 轮速" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fbff;strokeColor=#9fb3c8;fontSize=13;spacingLeft=8;" parent="1" vertex="1">
+          <mxGeometry x="125" y="260" width="160" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="sensor2_desc" value="IMU、轮速、纵向加速度、坡度估计&lt;br/&gt;用于激活判断与闭环控制" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#c8d2dc;fontSize=11;align=left;" parent="1" vertex="1">
+          <mxGeometry x="300" y="260" width="175" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="sensor3" value="底盘执行器反馈&lt;br&gt;制动 / 悬架 / 驱动状态" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fbff;strokeColor=#9fb3c8;fontSize=13;spacingLeft=8;" parent="1" vertex="1">
+          <mxGeometry x="125" y="360" width="160" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="sensor3_desc" value="EHBi / EMB、驱动系统、悬架系统&lt;br&gt;反馈执行器能力与当前状态：&lt;div&gt;制动盘过热标志位&lt;/div&gt;&lt;div&gt;制动高优先级功能状态：ECD，HHC&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#c8d2dc;fontSize=11;align=left;" parent="1" vertex="1">
+          <mxGeometry x="300" y="360" width="175" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="sensor4" value="整车功能请求&lt;br&gt;VCU / ADAS / 泊车&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fbff;strokeColor=#9fb3c8;fontSize=13;spacingLeft=8;" parent="1" vertex="1">
+          <mxGeometry x="125" y="460" width="160" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="sensor4_desc" value="整车模式、ADAS 功能、蠕行模式&lt;br&gt;用于功能进入、退出与仲裁" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#c8d2dc;fontSize=11;align=left;" parent="1" vertex="1">
+          <mxGeometry x="300" y="460" width="175" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="core_shell" value="" style="rounded=1;whiteSpace=wrap;html=1;arcSize=10;fillColor=#ecf2f8;strokeColor=#5b84b1;strokeWidth=2;" parent="1" vertex="1">
+          <mxGeometry x="540" y="165" width="620" height="540" as="geometry" />
+        </mxCell>
+        <mxCell id="core_head" value="VMC / VMCU HDC 主控" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#1f5c98;strokeColor=#163a63;fontColor=#ffffff;fontSize=16;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="560" y="182" width="580" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="hdc1" value="1. 坡度管理" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f6faff;strokeColor=#5b84b1;fontSize=13;fontStyle=1;align=left;spacingLeft=10;" parent="1" vertex="1">
+          <mxGeometry x="570" y="251" width="180" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="hdc1_desc" value="坡度识别、坡向判断、低附估计" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d6dfe8;fontSize=11;align=left;" parent="1" vertex="1">
+          <mxGeometry x="770" y="251" width="355" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="hdc2" value="2. 目标速度规划" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f6faff;strokeColor=#5b84b1;fontSize=13;fontStyle=1;align=left;spacingLeft=10;" parent="1" vertex="1">
+          <mxGeometry x="570" y="305" width="180" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="hdc2_desc" value="设定目标下坡速度、速度上限与变化率" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d6dfe8;fontSize=11;align=left;" parent="1" vertex="1">
+          <mxGeometry x="770" y="305" width="355" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="hdc3" value="3. 驾驶员意图识别" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f6faff;strokeColor=#5b84b1;fontSize=13;fontStyle=1;align=left;spacingLeft=10;" parent="1" vertex="1">
+          <mxGeometry x="570" y="359" width="180" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="hdc3_desc" value="识别人工制动、油门覆盖、转向接管与退出意图" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d6dfe8;fontSize=11;align=left;" parent="1" vertex="1">
+          <mxGeometry x="770" y="359" width="355" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="hdc4" value="4. 纵向控制协调" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f6faff;strokeColor=#5b84b1;fontSize=13;fontStyle=1;align=left;spacingLeft=10;" parent="1" vertex="1">
+          <mxGeometry x="570" y="413" width="180" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="hdc4_desc" value="驱动与制动一体化协调，保持稳定下坡速度" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d6dfe8;fontSize=11;align=left;" parent="1" vertex="1">
+          <mxGeometry x="770" y="413" width="355" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="hdc5" value="5. 执行器控制分配" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f6faff;strokeColor=#5b84b1;fontSize=13;fontStyle=1;align=left;spacingLeft=10;" parent="1" vertex="1">
+          <mxGeometry x="570" y="467" width="180" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="hdc5_desc" value="制动请求、电制动请求、必要时稳定性协同请求" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d6dfe8;fontSize=11;align=left;" parent="1" vertex="1">
+          <mxGeometry x="770" y="467" width="355" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="hdc6" value="6. HMI 状态输出" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f6faff;strokeColor=#5b84b1;fontSize=13;fontStyle=1;align=left;spacingLeft=10;" parent="1" vertex="1">
+          <mxGeometry x="570" y="521" width="180" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="hdc6_desc" value="激活 / 待命 / 故障 / 提示信息输出至仪表与 HMI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d6dfe8;fontSize=11;align=left;" parent="1" vertex="1">
+          <mxGeometry x="770" y="521" width="355" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="hdc7" value="7. 诊断与降级处理" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f6faff;strokeColor=#5b84b1;fontSize=13;fontStyle=1;align=left;spacingLeft=10;" parent="1" vertex="1">
+          <mxGeometry x="570" y="575" width="180" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="hdc7_desc" value="故障检测、DTC、功能退出、降级与故障保持" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#d6dfe8;fontSize=11;align=left;" parent="1" vertex="1">
+          <mxGeometry x="770" y="575" width="355" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="out1" value="VCU / 驱动系统&lt;br&gt;电制动扭矩请求" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fbff;strokeColor=#87a6c6;fontSize=13;" parent="1" vertex="1">
+          <mxGeometry x="1250" y="170" width="165" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="out1_desc" value="&lt;ul&gt;&lt;li&gt;主减前电机电制动扭矩&lt;/li&gt;&lt;/ul&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#c8d2dc;fontSize=11;align=left;" parent="1" vertex="1">
+          <mxGeometry x="1425" y="170" width="175" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="out2" value="EHBi / EMB&lt;br&gt;目标制动力 / 轮端制动请求" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fbff;strokeColor=#87a6c6;fontSize=13;" parent="1" vertex="1">
+          <mxGeometry x="1250" y="270" width="165" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="out2_desc" value="&lt;ul&gt;&lt;li&gt;总机械制动请求扭矩&lt;/li&gt;&lt;li style=&quot;&quot;&gt;HDC总制动请求扭矩(机械+电制动)仅供仲裁参考&lt;/li&gt;&lt;/ul&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#c8d2dc;fontSize=11;align=left;labelPosition=center;verticalLabelPosition=middle;verticalAlign=middle;" parent="1" vertex="1">
+          <mxGeometry x="1425" y="270" width="175" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="out3" value="陡坡调平悬架请求" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fbff;strokeColor=#87a6c6;fontSize=13;" parent="1" vertex="1">
+          <mxGeometry x="1250" y="372" width="165" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="out3_desc" value="&lt;ul&gt;&lt;li&gt;空簧高度请求&lt;/li&gt;&lt;li&gt;主动阻尼力请求&lt;/li&gt;&lt;/ul&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#c8d2dc;fontSize=11;align=left;" parent="1" vertex="1">
+          <mxGeometry x="1425" y="372" width="175" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="out4" value="仪表 / HMI&lt;br/&gt;激活 / 待命 / 故障 / 提示" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fbff;strokeColor=#87a6c6;fontSize=13;" parent="1" vertex="1">
+          <mxGeometry x="1250" y="474" width="165" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="out4_desc" value="&lt;ul&gt;&lt;li&gt;HDC功能状态、功能状态对驾驶员可视化&lt;/li&gt;&lt;/ul&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#c8d2dc;fontSize=11;align=left;" parent="1" vertex="1">
+          <mxGeometry x="1425" y="474" width="175" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="out5" value="诊断接口&lt;br/&gt;故障码 / 降级 / 使能状态" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8fbff;strokeColor=#87a6c6;fontSize=13;" parent="1" vertex="1">
+          <mxGeometry x="1250" y="576" width="165" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="out5_desc" value="&lt;ul&gt;&lt;li&gt;向整车诊断与服务工具上报 HDC 功能状态&lt;/li&gt;&lt;/ul&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#c8d2dc;fontSize=11;align=left;" parent="1" vertex="1">
+          <mxGeometry x="1425" y="576" width="175" height="82" as="geometry" />
+        </mxCell>
+        <mxCell id="bottom_header" value="整车效果" style="rounded=1;whiteSpace=wrap;html=1;arcSize=8;fillColor=#204f86;strokeColor=#163a63;fontColor=#ffffff;fontSize=14;fontStyle=1;" parent="1" vertex="1">
+          <mxGeometry x="110" y="735" width="1490" height="36" as="geometry" />
+        </mxCell>
+        <mxCell id="eff1" value="稳定下坡&lt;br&gt;在陡坡场景下保持期望车速" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef7ef;strokeColor=#73a37c;fontSize=13;" parent="1" vertex="1">
+          <mxGeometry x="120" y="790" width="280" height="86" as="geometry" />
+        </mxCell>
+        <mxCell id="eff2" value="降低驾驶员负担&lt;br/&gt;减少长下坡频繁制动与速度修正" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef7ef;strokeColor=#73a37c;fontSize=13;" parent="1" vertex="1">
+          <mxGeometry x="520" y="790" width="280" height="86" as="geometry" />
+        </mxCell>
+        <mxCell id="eff3" value="提升安全与舒适性&lt;br/&gt;与底盘域协同，提升可控性与稳定性" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef7ef;strokeColor=#73a37c;fontSize=13;" parent="1" vertex="1">
+          <mxGeometry x="920" y="790" width="280" height="86" as="geometry" />
+        </mxCell>
+        <mxCell id="eff4" value="支撑诊断与量产落地&lt;br/&gt;明确状态、故障、降级与接口边界" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eef7ef;strokeColor=#73a37c;fontSize=13;" parent="1" vertex="1">
+          <mxGeometry x="1320" y="790" width="280" height="86" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="" style="shape=flexArrow;endArrow=classic;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="484" y="437" as="sourcePoint" />
+            <mxPoint x="530" y="437" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4" value="" style="shape=flexArrow;endArrow=classic;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="1170" y="434.64000000000004" as="sourcePoint" />
+            <mxPoint x="1230" y="434.23" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

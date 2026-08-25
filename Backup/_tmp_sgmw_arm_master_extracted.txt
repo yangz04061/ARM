@@ -1,0 +1,267 @@
+﻿
+
+
+
+SGMW
+Functional Specification
+功能规范
+
+
+
+
+
+
+会签：
+
+
+
+
+
+编制：校对：
+审核：批准：
+
+
+
+目录
+1 文档范围及控制方法4
+1.1 版本历史4
+1.2 缩写4
+1.3 目的6
+1.4 适用范围6
+1.5 文档批准权力6
+1.6 文档变更控制流程6
+1.7 规范性引用文件6
+1.8 命名办法6
+1.8.1 日期表示6
+1.8.2 文件版本编号7
+1.8.3 文件命名7
+2 功能描述7
+3 系统架构7
+3.1 功能架构7
+3.1.1 与子系统自身控制功能边界区分8
+3.2 功能状态机8
+3.3 功能接口描述8
+3.3.1 总线信号9
+4 执行器需求10
+4.1 执行器安全需求10
+5 功能逻辑策略10
+5.1 功能逻辑策略概览10
+5.1.1 功能激活和退出策略10
+5.1.2 控制逻辑11
+5.1.3 功能降级策略12
+5.1.4 技术指标12
+5.1.5 验收准则12
+6 显示策略(HMI)13
+7 法律法规需求13
+
+文档范围及控制方法
+版本历史
+
+
+缩写
+目的
+本功能设计规范用于指导上汽通用五菱汽车股份有限公司与采埃孚汽车科技（上海）有限公司，开展关于智驱一体化底盘协同控制项目中ARM防侧翻功能的开发。
+适用范围
+本文档适用于 SGMW智驱一体化底盘协同控制项目功能开发阶段。
+文档批准权力
+本文档为功能实现文档，需经过SGMW智驱一体化底盘协同控制项目组签字确认。
+文档变更控制流程
+任何文档内容更新均须经过SGMW智驱一体化底盘协同控制项目组评审及签署完成。
+在未经SGMW智驱一体化底盘协同控制项目组达成共同意见下，该文档将不能被单方面进行修改。
+规范性引用文件
+下列文件中的条款通过本标准的引用成为本标准的条款。凡是注日期的引用文件，其随后的修改单（不包括勘误的内容）或修订版均不适用于本标准。凡是不注日期的引用文件，其最新版本适用于本标准。
+命名办法
+日期表示
+格式：yyyymmdd
+yyyy：用四位数字表示公元年份，如2013表示公元 2013年；
+mm：用两位数字表示月份，不足两位时，第一位用零补齐，如03表示3月；
+dd：用两位数字表示日期，不足两位时，第一位用零补齐，如15表示第15号。
+例如：
+20101027 表示（2010 年 10月 27日）
+文件版本编号
+下面是对文件版本进行编号要遵守的标准：
+起草版本的编号为0.1，0.2，0.3，…，0.10；
+一旦文件版本得以确认后，版本编号应该始自1.0；
+版本编号不断变化为：1.0，1.1，1.2，…，1.10；
+项目可以根据需要将版本编号晋升为2.0，2.1，2.2等。
+文件命名
+格式：SGMW_VMC_FS_Dn-Sn-Fn_XXX_Vnn_yyyymmdd 
+SGMW_VMC：项目简称； 
+FS：Functional specification ,功能需求描述； 
+Dn-Sn-Fn：功能 ID； 
+XXX：功能名称； 
+Vnn：文件版本； 
+yyyymmdd：文件形成日期。
+
+功能描述
+ARM（Active Roll Mitigation简称ARM），是VMC协助制动本身防侧翻功能，通过其他执行器（例如后转，悬架的控制）防止车辆发生侧翻的功能。控制场景主要区分如下两种：
+定半径（准静态）稳态绕圆的情况下，避免车辆侧翻
+高侧向加速度
+小动态
+横摆增速缓慢
+方向盘转角大但是变化慢
+变道，急转弯等高动态情况下避免车辆侧翻
+
+ARM算法评估车辆状态（综合基于地面附着系数，侧向加速度和整车参数等），判断是否存在即将发生的翻车情况，并决定是否介入干预，干预方式如下：
+
+不同于传统制动本身的制动，VMC会在更早的时机（车速/侧向加速度阈值低于传统制动阈值）通过悬架的控制降低整车重心，调节最佳的悬架刚度比例来减轻真正ARM工况时制动的压力，从而来提升整车侧倾极限，同时后转保持实时整车姿态控制，即使制动ARM工作时也不会退出控制（需要制动提供横摆力矩，至少提供准确方向。）
+
+
+
+系统架构
+功能架构
+
+
+与子系统自身控制功能边界区分
+VMC的ARM功能主要通过悬架，后转辅助制动本身ARM功能的控制。
+
+功能状态机
+参考功能激活和退出逻辑
+功能接口描述
+总线信号
+如下是ARM功能关键的输入输出接口，如需完整的信号列表，请参考最新的 CANmatrix 信号矩阵表。
+
+
+
+执行器需求
+该功能需要控制制动执行器等。需要至少有一个执行器可用。
+
+
+按照车型配置区分：
+
+控制目标按照Variant区分：
+
+
+
+执行器安全需求
+相关执行器安全要求，请参考safety 相关文档。
+功能逻辑策略
+功能逻辑策略概览
+
+VMC ARM的设计目标是：在真正发生侧翻前（制动本身ARM激活），尽可能的提高侧倾触发的极限ay：
+
+方式如下：
+手段1：（VMC ARM负责）
+Ix: 侧倾刚度，通常由车辆自身机械素质保证。 CDC/主动悬架的阻尼刚度控制可以间接影响侧倾。
+
+手段2： (VMC ARM负责)
+重力分力部分，这部分是负值是因为悬架侧倾导致重心在侧倾中心的外侧，所以可以通过主动悬架实现增加外侧主动力，减小内侧主动力，将质心位置调整到侧倾中心内测，达到摩托车转弯的效果。此时这部分变为正值，可以进一步提升侧翻发生的极限ay值。
+
+手段3：（VMC ARM负责）
+整车中心高度，只能通过主动悬架/空簧来整体调整。
+
+功能激活和退出策略
+
+VMC ARM功能进入激活状态（Active）条件（VMCArmSts：$1=active）
+同时满足下面所有条件：
+VMC ARM功能安全监控无故障降级(关键信号失效/关键执行器故障等)
+无高优先级功能（坦克掉头/圆规掉头/漂移/制动转向备份功能）
+判定车辆状态（考虑驾驶员意图和车辆动态）是否满足VMC ARM激活条件(下面条件同时满足)
+Ax>xxx or 车速>xxx
+Ay>xxx or 方向盘转角>xxx or 方向盘转角速率 > xxx
+Yaw rate>xxx
+ROI指数>xxx
+VMC ARM功能进入非激活状态（deactive）条件（VMCArmSts：$0=Inactive）
+满足下列任意一个条件退出：
+VMC ARM功能安全监控出现故障降级 (关键信号失效/关键执行器故障等)
+高优先级功能激活（坦克掉头/圆规掉头/漂移/制动转向备份功能）
+判定车辆状态（考虑驾驶员意图和车辆动态）是否满足VMC ARM退出条件(下面条件同时满足)
+Ax< xxx
+车速< xxx
+Ay< xxx
+方向盘转角< xxx
+Yaw rate< xxx
+ROI指数< xxx
+
+控制执行器
+ARM控制功能工作时会使用所有以下范围内可用执行器：包括：
+
+RWS actuator / 后轮转向
+边界定义
+VMC ARM可以使用后转作为执行器（前提制动可以提供准确的横摆扭矩大小/方向，这样在制动ARM激活期间，VMC的后转控制才有可能保持激活控制，否则后转依然不推荐使用，避免干扰制动本身ARM功能）
+SOP2 R1阶段之前：由于制动无法提供横摆力矩控制大小/方向等关键信号，VMC的Pre-stability是会退出的（VDC功能是不会退出的）。
+SOP2 R2阶段：制动承诺可以提供准确的横摆力矩控制大小/方向给VMC, VMC需要内部检查一下这个横摆扭矩的准确性，之后再考虑VMC的Pre-stability保持开启的可行性，否则可能发生额外的横摆叠加控制（后转/制动等）引起ARM功能的过控制。
+未来制动供应商会考虑使用RWS控制YSC/ARM功能，按照之前达成的协议，此时VMC优先级低于制动控制，此时VMC的所有功能控制都会退出。
+
+使用策略
+ARM功能激活时，根据横摆控制目标算出目标后转角度，通过0x0C0报文发送以下请求给RWS：
+后轮转向目标角度ReSteerTarAng=0x01（Request）
+后轮转向控制请求ReSteerActvnReq
+后轮转向目标角度有效性ReSteerTarAngV=0x0（有效）
+
+
+
+悬架系统：CDC, 
+边界定义
+
+VMC通过CDC最大/最小电流（CdcCurrentMax/MinRqst）控制调节CDC阻尼以优化侧倾能力。
+
+除去ADAS (侧风抗扰功能激活时，悬架会发送Not controllable 给VMC)外，VMC始终通过最大/最小电流动态调整CDC本身请求的电流值目标影响CDC阻尼。
+
+对CDC执行器的使用策略
+控制交互
+VMC ARM功能激活时，计算CDC目标电流百分比（min/max）通过0x0C0报文发送CDC控制目标请求给SUCU悬架控制器：
+CDC激活请求CdcActvRqst =0x01（Request请求）
+CDC电流百分比CdcCurrentReqMax/Min_xx
+SUCU收到VMC的控制请求后响应控制，并反馈CDC控制状态给VMC：
+CDC减震器状态CdcActrStsFb=0x01（Controlled）
+SUCU电磁阀实际电流百分比SUCUVlvTrgtCrnt_XX
+CDC基础电流百分比CdcBaseCurrent_xx
+控制请求仲裁
+悬架控制控制系统相关功能（随速调节控制、减速带/凹坑控制、自适应调节（道路分级））会计算CDC减振器控制目标电流，当收到VMC ARM的CDC控制请求，执行VMC的CDC最大、最小允许电流，即当CDC控制原本的目标电流处在VMC的CDC最大、最小允许电流范围内时，CDC执行原本的目标电流；当CDC控制原本的目标电流超出VMC的CDC最大、最小允许电流范围时，CDC执行VMC的CDC最大、最小允许电流。
+通过这种对CDC最大、最小允许电流范围进行控制的方式，VMC的CDC控制可以和其他需要控制CDC电流的功能共存，并让高频控制请求通过。
+悬架系统：空簧（ECAS）
+边界定义
+空簧供应商反馈：动态时高度只能同轴（前后）可控，刚度可以实现单轮控制。VMC通过如下方式控制空气弹簧
+前后轴的空簧高度调整：AirSuspTarHei_FL/FR/RL/RR
+四轮侧空簧刚度：TarStfnLvlFrntLe/TarStfnLvlFrntRi/TarStfnLvlReLe/TarStfnLvlReRi
+
+
+对悬架执行器的使用策略
+VMC ARM功能激活时，通过高度请求和刚度请求来控制空簧，如下8个信号分别控制每个车轮侧的高度和刚度：
+AirSpringHeiReq_FL
+AirSpringHeiReq_FR
+AirSpringHeiReq_RL
+AirSpringHeiReq_RR
+TarStfnReqFrntLe
+TarStfnReqFrntRi
+TarStfnReqReLe
+TarStfnReqReRi
+当ECAS激活请求AirSuspActvRqst =0x01（Request请求）且如上任意一种控制信号=0x01（Request请求），此时对应的高度/刚度请求需要被分别执行。
+空簧目标刚度等级TarStfnLvlFrntLe\TarStfnLvlFrntRi\ TarStfnLvlReLe\ TarStfnLvlReRi
+空簧目标高度等级AirSuspTarHei_FL\AirSuspTarHei_FR\AirSuspTarHei_RL\AirSuspTarHei_RR
+ECAS收到VMC的控制请求后响应并执行目标刚度等级控制，并反馈ECAS控制状态给VMC：
+ECAS握手状态AirSpringAhctrStsFb = 0x01（Controlled）
+ECAS当前实际高度ECASLtFntRealH、ECASRtFntRealH、ECASLtRrtRealH、ECASLtRrRealH
+ECAS当前刚度等级SuspStiffFrntLe、SuspStiffFrntRi、SuspStiffReLe、SuspStiffReRi
+当VMC ARM功能激活时ECAS优先响应VMC 的控制请求，当收到VMC的ECAS控制请求，即由VMC独占控制ECAS目标高度和刚度控制。ADAS 侧风抗扰功能优先级高于VMC，此时会发送Not Controllable 给VMC，VMC会退出对空簧的控制。
+
+悬架系统：主动悬架
+边界定义
+VMC ARM功能调整主动悬架的主动阻尼力。
+通过控制四轮侧主动悬架的主动阻尼力，调整车身重心位置，优化侧翻工况下内外侧载荷的分配（例如内侧主动悬架收缩，外侧主动悬架伸长来避免重心向外侧偏移过多）。主动悬架有两种控制模式： offset和override。
+除去ADAS (侧风抗扰功能激活时，悬架会发送Not controllable 给VMC)外，VMC如果请求模式（ActvSuspActvRqst=$2 Mode Damper Force Override阻尼力接管模）为override, 此时VMC拥有主动悬架控制最高优先级。
+VMC如果请求模式（ActvSuspActvRqst=$1Mode Damper Force Offset阻尼力补偿模式）为offset, 此时VMC请求只需要叠加到主动悬架自身请求值上执行。
+
+对悬架执行器的使用策略
+VMC ARM功能激活后，VMC通过调整四轮侧主动悬架的主动阻尼力，调整车身重心位置，优化侧翻工况下内外侧载荷的分配。ARM 功能激活期间，VMC拥有主动悬架控制最高优先级（除了ADAS 侧风抗扰功能会发送Not controllable 给VMC）。通过0x0C0报文发送控制目标请求给SUCU悬架控制器：
+主动悬架激活请求ActvSuspActvRqst= $1=Mode Damper Force offset或$2=Mode Damper Force override
+主动悬架目标阻尼力ActvSuspTarForce_FL、ActvSuspTarForce_FR、ActvSuspTarForce_RL、ActvSuspTarForce_RR（offset或override模式，取决于和主动悬架握手模式）
+主动悬架反馈以下信号给VMC：
+主动悬架执行器状态ActSuspActrSts =$2=Mode Damper Force offset或$3=Mode Damper Force overwrite，代表握手成功，执行VMC的目标阻尼力（offset或override模式，取决于和主动悬架握手模式），此时由VMC独占进行阻尼力控制
+
+主动悬架阻尼力信息
+
+
+功能降级策略
+功能降级通过Fault Management统一管理，请参考safety 相关文档。
+技术指标
+相关功能技术指标，请参考单独的验收相关文档。
+验收准则
+相关功能验收准则，请参考单独的验收相关文档。
+显示策略(HMI)
+NA
+
+法律法规需求
+N/A
+
